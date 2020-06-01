@@ -1,44 +1,62 @@
 from django.shortcuts import redirect, render
 
+from django.contrib import  auth
+from django.contrib.auth.models import User
+
 # Create your views here.
 def register(request):
-    return render(request,'accounts/register.html')
+    if request.method == 'POST':
+        # Get form values
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        password2 = request.POST['password2']
+
+        # Check if passwords match
+        if password == password2:
+            # Check username
+            if User.objects.filter(username=username).exists():
+                # That username is taken
+                return redirect('register')
+            else:
+                if User.objects.filter(email=email).exists():
+                    # The email is being used
+                    return redirect('register')
+                else:
+                    # Looks good
+                    user = User.objects.create_user(username=username, password=password,email=email, first_name=first_name, last_name=last_name)
+                    user.save()
+                    return redirect('login')
+        else:
+            # password do not match    
+            return redirect('register')
+    else:
+        return render(request, 'accounts/register.html')
 
 def login(request):
-    return render(request,'accounts/login.html')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
 
-def logout(request):
-    return redirect('index')
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            # logged in
+            return redirect('dashboard')
+        else:
+            # invalid credentials
+            return redirect('login')
+    else:
+        return render(request, 'accounts/login.html')
+
+def logout(request): 
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('index')
 
 def dashboard(request):
     return render(request,'accounts/dashboard.html')
 
-def listing(request,listing_id):
-    listing = get_object_or_404(Listing, pk=listing_id)
-
-    context = {
-      'listing': listing
-    }
-
-    return render(request, 'listings/listing.html', context)       
-
-def search(request):
-    queryset_list=Listing.objects.all()
-
-    if 'city' in request.GET:
-        city = request.GET['city']
-        if city:
-            queryset_list = queryset_list.filter(city__iexact=city)
-    if 'bedrooms' in request.GET:
-        bedrooms = request.GET['bedrooms']
-        if bedrooms:
-            queryset_list = queryset_list.filter(bedrooms__gte=bedrooms)
-    if 'price' in request.GET:
-        price = request.GET['price']
-        if price:
-            queryset_list = queryset_list.filter(price__lte=price)
-
-    context = {
-        'listings': queryset_list
-    }         
-    return render(request,'listings/search.html',context)    

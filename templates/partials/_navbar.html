@@ -15,8 +15,19 @@
                         <li class="HillSide"><a class="waves-effect waves-dark" href="{% url 'index' %}">Home</a></li> 
                         <li class="HillSide"><a class="waves-effect waves-dark" href="{% url 'about' %}">About</a></li> 
 						<li><a class="waves-effect waves-dark" href="{% url 'listings' %}">Featured Listings</a></li>
-                        <li><a class="waves-effect waves-dark" href="{% url 'login' %}">Login</a></li>
-                        <li><a class="waves-effect waves-dark" href="{% url 'register' %}">Register</a></li>
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a class="waves-effect waves-dark" href="javascript:{document.getElementById('logout').submit()}" class="nav-link">Logout</a>
+                                <form action="{% url 'logout' %}" method="POST" id="logout">
+                                  {% csrf_token %}
+                                  <input type="hidden">
+                                </form>
+                            </li>
+
+                        {% else %}
+                            <li><a class="waves-effect waves-dark" href="{% url 'login' %}">Login</a></li>
+                            <li><a class="waves-effect waves-dark" href="{% url 'register' %}">Register</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
