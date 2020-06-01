@@ -1,0 +1,106 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+{% block content %}
+
+
+<section id="inner-headline">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="pageTitle">About Us</h2>
+			</div>
+		</div>
+	</div>
+	</section>
+	<section id="content">
+	<section class="section-padding">
+		<div class="container">
+			<div class="row showcase-section">
+				<div class="col-md-6">
+					<img src="{% static 'img/dev1.png'%}" alt="showcase image">
+				</div>
+				<div class="col-md-6">
+					<div class="about-text">
+						<h3>Our <span class="color">Company</span></h3>
+						<p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar.</p>
+						 <p>Sed ut perspiciaatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo..</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="container">
+					
+					<div class="about">
+				
+						
+						<div class="row">
+						
+								
+						
+						
+						 
+						<br>
+						<!-- Our Team starts -->
+				
+						<!-- Heading -->
+						<div class="block-heading-six">
+							<h4 class="bg-color">Our Team</h4>
+						</div>
+						<br>
+						
+						<!-- Our team starts -->
+						
+						<div class="team-six">
+							<div class="row">
+								
+								{% if realtors %}
+								{% for realtor in realtors%}
+						
+								<div class="col-md-4 col-sm-6">
+									<!-- Team Member -->
+									<div class="team-member">
+										<!-- Image -->
+										<img class="img-responsive" style="height:200px;text-align:left;border-radius:50%;"src="{{realtor.photo.url}}" alt="">
+										<!-- Name -->
+										
+										<ul >
+											<li >
+												<div class="collapsible-header" >
+													<i class="material-icons" >title</i>
+													{{realtor.name}}
+												  </div>
+											  </li>
+											  <li >
+											  <div class="collapsible-header" >
+												  <i class="material-icons" >email</i>
+												  {{realtor.email}}
+												</div>
+											</li>
+											<li>
+											  <div class="collapsible-header"><i class="material-icons">call</i>{{realtor.phone}}</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+						
+								{% endfor %}
+							{% else %}
+							<div class="col-md-3 col-sm-6">
+								<p>No realtors available</p>
+							</div>
+							{% endif %}
+
+							</div>
+						</div>
+						
+						<!-- Our team ends -->
+					  
+						
+					</div>
+									
+				</div>
+    </section>
+    
+{% endblock %}

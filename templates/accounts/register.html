@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+<!-- Slider -->
+    <section id="banner">
+        <div id="demo-1" data-zs-src='["{% static "img/photos/img1.jpg" %}","{% static "img/photos/img2.jpg" %}","{% static "img/photos/img3.jpg" %}"]' data-zs-overlay="dots">
+            <div class="demo-inner-content">
+            	<section id="content" >
+                    <div class="container" style="width: 85%;padding-bottom: 20px;">
+
+                        <h2 >Register
+                        </h2>
+                        <div class="card-body">
+                            <form action="{% url 'register' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="input-field form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" name="first_name" class="form-control" required>
+                                  </div>
+                                  <div class="input-field form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" name="last_name" class="form-control" required>
+                                  </div>
+                              <div class="input-field form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" class="form-control" required>
+                              </div>
+                              <div class="input-field form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" required>
+                              </div>
+                              <div class="input-field form-group">
+                                <label for="password2">Password</label>
+                                <input type="password" name="password" class="form-control" required>
+                              </div>
+                              <div class="input-field form-group">
+                                <label for="password">Confirm Password</label>
+                                <input type="password" name="password2" class="form-control" required>
+                              </div>
+                              <input type="submit" value="Register" class="btn btn-secondary btn-block">
+                            </form>
+                          </div>
+                            </div>  
+
+                </section>        
+            </div>
+        </div>
+    </section>
+    <!-- end slider --> 
+
+{% endblock %}

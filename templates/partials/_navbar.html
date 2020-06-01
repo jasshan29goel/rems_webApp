@@ -1,0 +1,25 @@
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><i class="icon-info-blocks material-icons">account_balance</i>REMS</a>
+                </div>
+                <div class="navbar-collapse collapse ">
+                    <ul class="nav navbar-nav">
+                        <li class="HillSide"><a class="waves-effect waves-dark" href="{% url 'index' %}">Home</a></li> 
+                        <li class="HillSide"><a class="waves-effect waves-dark" href="{% url 'about' %}">About</a></li> 
+						<li><a class="waves-effect waves-dark" href="{% url 'listings' %}">Featured Listings</a></li>
+                        <li><a class="waves-effect waves-dark" href="{% url 'login' %}">Login</a></li>
+                        <li><a class="waves-effect waves-dark" href="{% url 'register' %}">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</header>
+    <!-- end header -->

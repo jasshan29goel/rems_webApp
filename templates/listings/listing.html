@@ -1,0 +1,207 @@
+{% extends 'base.html' %} 
+
+{% load humanize %}
+
+{% block content %}
+<section class="section-padding gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h2>{{listing.title}}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+        
+            <div class="col-md-6 col-sm-6">
+                <!-- <div class="about-image">
+                    <img src="img/about.jpg" alt="About Images">
+                </div> -->
+                <div id="demo-1" data-zs-src='["{{listing.photo_main.url}}"]' data-zs-overlay="dots">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="about-text">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>Price</h3>
+                            <span class="price">{{listing.price|intcomma}}</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3>Address</h3>
+                            <h5>{{listing.address}},{{listing.city}}</h5>
+                        </div>
+
+                    </div>
+                <h3>Description of the listing</h3>
+                    <p>{{listing.description}}</p>
+                    <a href="#" class="btn btn-primary waves-effect waves-dark">Inquire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>	  
+
+
+<section id="content"> 
+<div class="container">
+
+    <section class="services">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="aligncenter"><h2 class="aligncenter">Details</h2></div>
+            <br/>
+        </div>
+    </div>
+
+ <div class="row">
+
+        <div class="col-sm-4 info-blocks">
+            <div class="info-blocks-in">
+                <i class="icon-info-blocks material-icons">airline_seat_individual_suite</i>
+                <h3>Bedrooms</h3>
+                <h2 style="color:black;">{{listing.bedrooms}}</h2>
+            </div>
+        </div>
+        <div class="col-sm-4 info-blocks">
+            <div class="info-blocks-in">
+                <i class="icon-info-blocks material-icons">hot_tub</i>
+                <h3>Bathroom</h3>
+                <h2 style="color:black;">{{listing.bathrooms}}</h2>
+            </div>
+        </div>
+        <div class="col-sm-4 info-blocks">
+            <div class="info-blocks-in">
+                <i class="icon-info-blocks material-icons">directions_car</i>
+                <h3>Garage</h3>
+                <h2 style="color:black;">{{listing.garage}}</h2>
+            </div>
+        </div>
+        <div class="col-sm-4 info-blocks">
+            <div class="info-blocks-in">
+                <i class="icon-info-blocks material-icons">check_box</i>
+                <h3>Lot size</h3>
+                <h2 style="color:black;">{{listing.lot_size}}</h2>
+            </div>
+        </div>
+        <div class="col-sm-4 info-blocks"> 
+            <div class="info-blocks-in">
+                <i class="icon-info-blocks material-icons">check_box</i>
+                <h3>Sqft</h3>
+                <h2 style="color:black;">{{listing.sqft}}</h2>
+            </div>
+        </div>
+        <div class="col-sm-4 info-blocks">
+            <div class="info-blocks-in">
+                <i class="icon-info-blocks material-icons">person</i>
+                <h3>Realtor</h3>
+                <h2 style="color:black;">{{listing.realtor}}</h2>
+            </div>
+        </div>
+    </div>
+
+    </section>
+</div>
+</section>
+
+			  <!-- Start Gallery 1-2 -->
+              <section id="gallery-1" class="content-block section-wrapper gallery-1">
+                <div class="container">
+               <!-- /.gallery-filter -->
+               
+               <div class="row">
+                   <div id="isotope-gallery-container">
+                       {% if listing.photo_1 %}
+                       <div class="col-md-4 col-sm-6 col-xs-12 gallery-item-wrapper artwork creative">
+                           <div class="gallery-item">
+                               <div class="gallery-thumb">
+                                   <img src="{{listing.photo_1.url}}" style="height: 200px;"  class="img-responsive" alt="1st gallery Thumb">
+                                   <div class="image-overlay"></div>
+                                   <a href="{{listing.photo_1.url}}" class="gallery-zoom"><i class="fa fa-eye"></i></a>
+                                   
+                               </div>
+
+                           </div>
+                       </div>
+                       {% endif %}
+                       <!-- /.gallery-item-wrapper -->
+                       {% if listing.photo_2 %}
+                       <div class="col-md-4 col-sm-6 col-xs-12 gallery-item-wrapper nature outside">
+                           <div class="gallery-item">
+                               <div class="gallery-thumb">
+                                <img src="{{listing.photo_2.url}}"  style="height: 200px;"class="img-responsive" alt="2nd gallery Thumb">
+                                <div class="image-overlay"></div>
+                                <a href="{{listing.photo_2.url}}" class="gallery-zoom"><i class="fa fa-eye"></i></a>
+                                
+                               </div>
+ 
+                           </div>
+                       </div>
+                       {% endif %}
+                       <!-- /.gallery-item-wrapper -->
+                       {% if listing.photo_3 %}
+                       <div class="col-md-4 col-sm-6 col-xs-12 gallery-item-wrapper photography artwork">
+                           <div class="gallery-item">
+                               <div class="gallery-thumb">
+                                <img src="{{listing.photo_3.url}}" style="height: 200px;" class="img-responsive" alt="3rd gallery Thumb">
+                                <div class="image-overlay"></div>
+                                <a href="{{listing.photo_3.url}}" class="gallery-zoom"><i class="fa fa-eye"></i></a>
+                                
+                               </div>
+    
+                           </div>
+                       </div>
+                       {% endif %}
+                       <!-- /.gallery-item-wrapper -->
+                       {% if listing.photo_4 %}
+                       <div class="col-md-4 col-sm-6 col-xs-12 gallery-item-wrapper creative nature">
+                           <div class="gallery-item">
+                               <div class="gallery-thumb">
+                                <img src="{{listing.photo_4.url}}" style="height: 200px;" class="img-responsive" alt="4th gallery Thumb">
+                                <div class="image-overlay"></div>
+                                <a href="{{listing.photo_4.url}}" class="gallery-zoom"><i class="fa fa-eye"></i></a>
+                                
+                               </div>
+  
+                           </div>
+                       </div>
+                       {% endif %}
+                       <!-- /.gallery-item-wrapper -->
+                       {% if listing.photo_5 %}
+                       <div class="col-md-4 col-sm-6 col-xs-12 gallery-item-wrapper nature">
+                           <div class="gallery-item">
+                               <div class="gallery-thumb">
+                                <img src="{{listing.photo_5.url}}" style="height: 200px;" class="img-responsive" alt="5th gallery Thumb">
+                                <div class="image-overlay"></div>
+                                <a href="{{listing.photo_5.url}}" class="gallery-zoom"><i class="fa fa-eye"></i></a>
+                                
+                               </div>
+
+                           </div>
+                       </div>
+                       {% endif %}
+                       <!-- /.gallery-item-wrapper -->
+                       {% if listing.photo_6 %}
+                       <div class="col-md-4 col-sm-6 col-xs-12 gallery-item-wrapper artwork creative">
+                           <div class="gallery-item">
+                               <div class="gallery-thumb">
+                                <img src="{{listing.photo_6.url}}" style="height: 200px;" class="img-responsive" alt="6th gallery Thumb">
+                                <div class="image-overlay"></div>
+                                <a href="{{listing.photo_6.url}}" class="gallery-zoom"><i class="fa fa-eye"></i></a>
+                                
+                               </div>
+                           </div>
+                       </div>
+                       {% endif %}
+
+                   </div>
+                   <!-- /.isotope-gallery-container -->
+               </div>
+               <!-- /.row --> 
+           <!-- /.container -->
+           </div>
+       </section>
+
+{% endblock %}
