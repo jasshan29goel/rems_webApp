@@ -4,6 +4,46 @@
 
 
 {% block content %}
-<h1>dashboard</h1>
+<section id="inner-headline">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 class="pageTitle">Dashboard</h2>
+			</div>
+		</div>
+	</div>
+</section>
 
+<section id="content" style="padding-top: 20px;">
+    <div class="about home-about container" style="padding-top: 20px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block-heading-two">
+                    <h3><span>Welcome {{user.first_name}} {{user.last_name}}</span></h3>
+                    <p>Here are the property listings that you have inquired about
+                    </p>
+                </div>
+                <ul class="collapsible" id="accordionSection" data-collapsible="accordion">
+                    {% if contacts %}
+                        {% for contact in contacts%}		
+                            <li>
+                            <div class="collapsible-header HillSide">{{contact.listing}}</div>
+                            <div class="collapsible-body"><p>{{contact.message}}</p>
+                                <p style="float: left;">{{contact.contact_date}}</p>
+                                <a  style="margin: 10px;float: right;" href="{% url 'listing' contact.listing_id%}" class="btn btn-primary waves-effect waves-dark">View Listing</a>
+                            </div>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-4 md-margin-bottom-40">
+                            <p>No Inquires  available</p>
+                        </div>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <br/> 
+    </div> 
+</section>
+    
 {%endblock%}
