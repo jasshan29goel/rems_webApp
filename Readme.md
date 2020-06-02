@@ -13,6 +13,12 @@ then create a database named rems
 $ sudo apt-get install python-psycopg2
 $ sudo apt-get install libpq-dev
 ```
+```sh
+$ cd rems
+$ vim settings.py
+```
+in the line number 80-90 fill the required information about postgres username and password which you just setup
+
 Clone the repo and setup a virtual env if you want to
 ```sh
 $ pip install django psycopg2 pillow
